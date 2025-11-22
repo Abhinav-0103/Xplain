@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cosmos-bg: #050510;
+  --color-cosmos-card: #0f0f25;
+  --color-cosmos-text: #e0e0e0;
+  --color-cosmos-accent-cyan: #00f3ff;
+  --color-cosmos-accent-magenta: #ff00ff;
+  --color-cosmos-accent-purple: #bd00ff;
+  
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-cosmos-bg);
+  color: var(--color-cosmos-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(15, 15, 37, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}

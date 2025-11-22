@@ -1,0 +1,80 @@
+// Visualization data organized by category
+export const visualizations = [
+    {
+        id: 'linear-regression',
+        title: 'Linear Regression',
+        description: 'Interactive Least Squares fitting with noise control.',
+        category: 'Machine Learning',
+        route: '/visualizations/linear-regression',
+        difficulty: 'Beginner',
+    },
+    {
+        id: 'gradient-descent',
+        title: 'Gradient Descent (2D)',
+        description: 'Visualize optimization on a 2D loss surface.',
+        category: 'Machine Learning',
+        route: '/visualizations/gradient-descent',
+        difficulty: 'Intermediate',
+    },
+    {
+        id: 'gradient-descent-3d',
+        title: 'Gradient Descent (3D)',
+        description: 'Interactive 3D surface with optimization path.',
+        category: 'Machine Learning',
+        route: '/visualizations/gradient-descent-3d',
+        difficulty: 'Intermediate',
+    },
+    // Placeholders for future content
+    {
+        id: 'neural-network',
+        title: 'Neural Network',
+        description: 'Coming soon: Visualize forward and backpropagation.',
+        category: 'Deep Learning',
+        route: null,
+        difficulty: 'Advanced',
+    },
+    {
+        id: 'binary-search-tree',
+        title: 'Binary Search Tree',
+        description: 'Coming soon: Interactive BST operations.',
+        category: 'Data Structures',
+        route: null,
+        difficulty: 'Beginner',
+    },
+    {
+        id: 'sorting-algorithms',
+        title: 'Sorting Algorithms',
+        description: 'Coming soon: Compare different sorting algorithms.',
+        category: 'Algorithms',
+        route: null,
+        difficulty: 'Beginner',
+    },
+];
+
+export const categories = [
+    {
+        id: 'ml',
+        name: 'Machine Learning',
+        icon: 'Brain',
+        description: 'Understand regression, classification, and optimization algorithms.',
+        color: 'magenta',
+    },
+    {
+        id: 'dl',
+        name: 'Deep Learning',
+        icon: 'Network',
+        description: 'Visualize neural networks and deep learning concepts.',
+        color: 'cyan',
+    },
+    {
+        id: 'dsa',
+        name: 'Data Structures & Algorithms',
+        icon: 'Database',
+        description: 'Explore sorting, searching, trees, and graphs.',
+        color: 'purple',
+    },
+];
+
+export const getVisualizationsByCategory = (categoryName) => {
+    return visualizations.filter(viz => viz.category === categoryName);
+};
