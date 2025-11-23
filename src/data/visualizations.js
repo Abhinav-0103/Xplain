@@ -36,9 +36,9 @@ export const visualizations = [
     {
         id: 'binary-search-tree',
         title: 'Binary Search Tree',
-        description: 'Coming soon: Interactive BST operations.',
-        category: 'Data Structures',
-        route: null,
+        description: 'Interactive BST operations: Insert, Search, and Visualize.',
+        category: 'Data Structures & Algorithms',
+        route: '/visualizations/binary-search-tree',
         difficulty: 'Beginner',
     },
     {

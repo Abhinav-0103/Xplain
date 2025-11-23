@@ -23,7 +23,7 @@ export const generateData = (n, slope, intercept, noiseLevel) => {
  * @returns {Object} { slope, intercept }
  */
 export const calculateRegression = (data) => {
-    if (data.length === 0) return { slope: 0, intercept: 0 };
+    if (data.length === 0) return { slope: 0, intercept: 0, mse: 0 };
 
     const n = data.length;
     let sumX = 0;
@@ -38,11 +38,21 @@ export const calculateRegression = (data) => {
         sumXX += data[i].x * data[i].x;
     }
 
-    const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+    const denominator = n * sumXX - sumX * sumX;
+    if (denominator === 0) return { slope: 0, intercept: 0, mse: 0 };
+
+    const slope = (n * sumXY - sumX * sumY) / denominator;
     const intercept = (sumY - slope * sumX) / n;
 
+    // Calculate MSE
+    let sumSquaredError = 0;
+    for (let i = 0; i < n; i++) {
+        const predictedY = slope * data[i].x + intercept;
+        sumSquaredError += Math.pow(data[i].y - predictedY, 2);
+    }
+    const mse = sumSquaredError / n;
 
-    return { slope, intercept };
+    return { slope, intercept, mse };
 };
 
 /**

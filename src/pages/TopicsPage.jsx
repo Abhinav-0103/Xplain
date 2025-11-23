@@ -30,7 +30,7 @@ const TopicsPage = () => {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <h1 className="text-3xl font-bold mb-8 neon-text">All Topics</h1>
+            <h1 className="text-3xl font-bold font-heading mb-8 text-paper-text">All Topics</h1>
 
             {/* Category Filter */}
             <div className="mb-8 flex flex-wrap gap-3">
@@ -57,7 +57,7 @@ const TopicsPage = () => {
             </div>
 
             {filteredVisualizations.length === 0 && (
-                <div className="text-center py-20 text-gray-500">
+                <div className="text-center py-20 text-paper-text-muted font-serif italic">
                     No visualizations found in this category yet.
                 </div>
             )}
@@ -69,8 +69,8 @@ const CategoryButton = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
         className={`px-4 py-2 rounded-full font-medium transition-all ${isActive
-                ? 'bg-cosmos-accent-cyan/20 text-cosmos-accent-cyan border border-cosmos-accent-cyan/50 neon-border'
-                : 'bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10 hover:text-white'
+                ? 'bg-paper-accent text-white shadow-md'
+                : 'bg-white border border-paper-border text-paper-text-muted hover:bg-paper-bg hover:text-paper-text'
             }`}
     >
         {label}
@@ -82,14 +82,14 @@ const VisualizationCard = ({ visualization }) => {
 
     if (isComingSoon) {
         return (
-            <div className="glass-panel p-6 rounded-xl h-48 flex flex-col justify-between opacity-60 cursor-not-allowed">
+            <div className="paper-card p-6 rounded-xl h-48 flex flex-col justify-between opacity-60 cursor-not-allowed">
                 <div>
-                    <h2 className="text-xl font-bold text-gray-400 mb-2">{visualization.title}</h2>
-                    <p className="text-sm text-gray-400">{visualization.description}</p>
+                    <h2 className="text-xl font-bold font-heading text-paper-text-muted mb-2">{visualization.title}</h2>
+                    <p className="text-sm text-paper-text-muted font-serif">{visualization.description}</p>
                 </div>
                 <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-500 uppercase tracking-wider">{visualization.difficulty}</span>
-                    <span className="text-xs text-gray-500">Coming Soon</span>
+                    <span className="text-xs text-paper-text-muted uppercase tracking-wider font-medium">{visualization.difficulty}</span>
+                    <span className="text-xs text-paper-text-muted font-serif italic">Coming Soon</span>
                 </div>
             </div>
         );
@@ -98,20 +98,20 @@ const VisualizationCard = ({ visualization }) => {
     return (
         <Link
             to={visualization.route}
-            className="glass-panel p-6 rounded-xl h-48 flex flex-col justify-between hover:border-cosmos-accent-cyan/50 transition-all group cursor-pointer"
+            className="paper-card p-6 rounded-xl h-48 flex flex-col justify-between group cursor-pointer"
         >
             <div>
-                <h2 className="text-xl font-bold text-white mb-2 group-hover:text-cosmos-accent-cyan transition-colors">
+                <h2 className="text-xl font-bold font-heading text-paper-text mb-2 group-hover:text-paper-accent transition-colors">
                     {visualization.title}
                 </h2>
-                <p className="text-sm text-gray-400">{visualization.description}</p>
-                <span className="inline-block mt-2 text-xs text-gray-500 uppercase tracking-wider">
+                <p className="text-sm text-paper-text-muted font-serif">{visualization.description}</p>
+                <span className="inline-block mt-2 text-xs text-paper-accent uppercase tracking-wider font-medium">
                     {visualization.category}
                 </span>
             </div>
             <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-500 uppercase tracking-wider">{visualization.difficulty}</span>
-                <ArrowRight className="w-4 h-4 text-cosmos-accent-cyan opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <span className="text-xs text-paper-text-muted uppercase tracking-wider font-medium">{visualization.difficulty}</span>
+                <ArrowRight className="w-4 h-4 text-paper-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </div>
         </Link>
     );

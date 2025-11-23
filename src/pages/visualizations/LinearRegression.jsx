@@ -25,7 +25,10 @@ const LinearRegression = () => {
     };
 
     // Calculate Regression Line
-    const { slope: fitSlope, intercept: fitIntercept } = useMemo(() => calculateRegression(data), [data]);
+    const regressionLine = useMemo(() => {
+        const result = calculateRegression(data);
+        return result || { slope: 0, intercept: 0, mse: 0 };
+    }, [data]);
 
     // SVG Dimensions & Scaling
     const width = 600;
@@ -38,9 +41,9 @@ const LinearRegression = () => {
 
     // Regression Line Points
     const x1 = 0;
-    const y1 = fitSlope * x1 + fitIntercept;
+    const y1 = regressionLine.slope * x1 + regressionLine.intercept;
     const x2 = 10;
-    const y2 = fitSlope * x2 + fitIntercept;
+    const y2 = regressionLine.slope * x2 + regressionLine.intercept;
 
     const controls = (
         <>
@@ -60,11 +63,15 @@ const LinearRegression = () => {
                 </Button>
             </ControlGroup>
 
-            <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-                <h3 className="text-sm font-medium text-gray-300 mb-2">Model Fit</h3>
-                <div className="space-y-1 text-xs font-mono text-cosmos-accent-cyan">
-                    <p>Slope: {fitSlope.toFixed(3)}</p>
-                    <p>Intercept: {fitIntercept.toFixed(3)}</p>
+            <div className="mt-4 p-3 bg-paper-bg rounded-lg border border-paper-border text-xs text-paper-text-muted">
+                <p>💡 Adjust sliders to see real-time fitting.</p>
+            </div>
+            <div className="mt-6 p-4 bg-paper-bg rounded-lg border border-paper-border">
+                <h3 className="text-sm font-medium text-paper-text mb-2">Model Fit</h3>
+                <div className="space-y-1 text-xs font-mono text-paper-text-muted">
+                    <p>Slope (m): {regressionLine.slope?.toFixed(3) || '0.000'}</p>
+                    <p>Intercept (b): {regressionLine.intercept?.toFixed(3) || '0.000'}</p>
+                    <p>MSE: {regressionLine.mse?.toFixed(3) || '0.000'}</p>
                 </div>
             </div>
         </>
@@ -74,13 +81,27 @@ const LinearRegression = () => {
         <VisualizationLayout title="Linear Regression" controls={controls}>
             <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`} className="overflow-visible">
                 {/* Grid Lines (Optional) */}
-                <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
-                <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="rgba(255,255,255,0.2)" strokeWidth="2" />
+                <line
+                    x1={0}
+                    y1={height - padding}
+                    x2={width}
+                    y2={height - padding}
+                    stroke="#E6E2D6"
+                    strokeWidth="2"
+                />
+                <line
+                    x1={padding}
+                    y1={0}
+                    x2={padding}
+                    y2={height}
+                    stroke="#E6E2D6"
+                    strokeWidth="2"
+                />
 
                 {/* Residuals */}
                 <AnimatePresence>
                     {showResiduals && data.map((point) => {
-                        const predictedY = fitSlope * point.x + fitIntercept;
+                        const predictedY = regressionLine.slope * point.x + regressionLine.intercept;
                         return (
                             <motion.line
                                 key={`res-${point.id}`}
@@ -91,7 +112,7 @@ const LinearRegression = () => {
                                 y1={yScale(point.y)}
                                 x2={xScale(point.x)}
                                 y2={yScale(predictedY)}
-                                stroke="#ff0055"
+                                stroke="#8D8D8D"
                                 strokeWidth="1"
                                 strokeDasharray="4 4"
                             />
@@ -108,29 +129,23 @@ const LinearRegression = () => {
                         y2: yScale(y2),
                     }}
                     transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-                    stroke="var(--color-cosmos-accent-cyan)"
+                    stroke="#2A9D8F"
                     strokeWidth="3"
                     className="neon-border"
                 />
 
                 {/* Data Points */}
                 <AnimatePresence>
-                    {data.map((point) => (
+                    {data.map((point, idx) => (
                         <motion.circle
                             key={point.id}
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{
-                                cx: xScale(point.x),
-                                cy: yScale(point.y),
-                                scale: 1,
-                                opacity: 1
-                            }}
-                            exit={{ scale: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            r="6"
-                            fill="var(--color-cosmos-accent-magenta)"
-                            className="cursor-pointer hover:fill-white transition-colors"
-                            filter="drop-shadow(0 0 4px var(--color-cosmos-accent-magenta))"
+                            cx={xScale(point.x)}
+                            cy={yScale(point.y)}
+                            r={6}
+                            fill="#E07A5F"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.3, delay: idx * 0.01 }}
                         />
                     ))}
                 </AnimatePresence>

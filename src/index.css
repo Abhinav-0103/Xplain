@@ -1,39 +1,83 @@
 @import "tailwindcss";
 
-@theme {
-  --color-cosmos-bg: #050510;
-  --color-cosmos-card: #0f0f25;
-  --color-cosmos-text: #e0e0e0;
-  --color-cosmos-accent-cyan: #00f3ff;
-  --color-cosmos-accent-magenta: #ff00ff;
-  --color-cosmos-accent-purple: #bd00ff;
-  
+:root {
+  /* Warm Paper Theme Palette */
+  --color-paper-bg: #F9F7F1;
+  /* Warm Cream */
+  --color-paper-card: #FFFFFF;
+  /* White */
+  --color-paper-text: #2C1810;
+  /* Dark Brown/Charcoal */
+  --color-paper-text-muted: #5D5550;
+  /* Soft Brown/Gray */
+  --color-paper-accent: #E07A5F;
+  /* Terracotta */
+  --color-paper-accent-secondary: #3D405B;
+  /* Slate Blue/Gray */
+  --color-paper-border: #E6E2D6;
+  /* Light Beige Border */
+
+  /* Typography */
+  --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
 }
 
-:root {
-  color-scheme: dark;
+@theme {
+  --color-paper-bg: var(--color-paper-bg);
+  --color-paper-card: var(--color-paper-card);
+  --color-paper-text: var(--color-paper-text);
+  --color-paper-text-muted: var(--color-paper-text-muted);
+  --color-paper-accent: var(--color-paper-accent);
+  --color-paper-accent-secondary: var(--color-paper-accent-secondary);
+  --color-paper-border: var(--color-paper-border);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
 body {
-  background-color: var(--color-cosmos-bg);
-  color: var(--color-cosmos-text);
+  background-color: var(--color-paper-bg);
+  color: var(--color-paper-text);
   font-family: var(--font-sans);
-  overflow-x: hidden;
 }
 
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: rgba(15, 15, 37, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* Paper Card Effect */
+.paper-card {
+  background-color: var(--color-paper-card);
+  border: 1px solid var(--color-paper-border);
+  box-shadow: 0 4px 6px -1px rgba(44, 24, 16, 0.05), 0 2px 4px -1px rgba(44, 24, 16, 0.03);
+  transition: all 0.3s ease;
 }
 
-.neon-text {
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+.paper-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(44, 24, 16, 0.08), 0 4px 6px -2px rgba(44, 24, 16, 0.04);
+  transform: translateY(-2px);
+  border-color: var(--color-paper-accent);
 }
 
-.neon-border {
-  box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+/* Typography Utilities */
+.font-heading {
+  font-family: var(--font-serif);
+}
+
+.text-accent {
+  color: var(--color-paper-accent);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-paper-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4C5B0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-paper-accent);
 }

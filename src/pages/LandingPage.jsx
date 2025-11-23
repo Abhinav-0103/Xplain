@@ -25,7 +25,7 @@ const LandingPage = () => {
             {/* Hero Section */}
             <section className="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-32 lg:pt-32 lg:pb-40">
                 <div className="absolute inset-0 -z-10">
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cosmos-accent-purple/20 via-cosmos-bg to-cosmos-bg opacity-50"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-paper-accent/5 via-paper-bg to-paper-bg opacity-40"></div>
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -33,16 +33,16 @@ const LandingPage = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
+                        className="text-5xl md:text-7xl font-bold font-heading tracking-tight mb-6 text-paper-text"
                     >
-                        Visualize the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cosmos-accent-cyan to-cosmos-accent-magenta neon-text">Future</span>
+                        Visualize the <span className="text-paper-accent italic">Future</span>
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10"
+                        className="mt-4 text-xl text-paper-text-muted max-w-2xl mx-auto mb-10 font-serif"
                     >
                         Master Machine Learning, Deep Learning, and Algorithms through interactive, stunning visualizations.
                     </motion.p>
@@ -53,7 +53,7 @@ const LandingPage = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="flex justify-center gap-4 mb-16"
                     >
-                        <Link to="/topics" className="group relative px-8 py-3 bg-cosmos-accent-cyan/10 border border-cosmos-accent-cyan/50 text-cosmos-accent-cyan rounded-full font-semibold hover:bg-cosmos-accent-cyan/20 transition-all neon-border flex items-center gap-2">
+                        <Link to="/topics" className="group relative px-8 py-3 bg-paper-accent text-white rounded-full font-semibold hover:bg-paper-accent/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center gap-2">
                             Explore All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>
@@ -66,8 +66,8 @@ const LandingPage = () => {
                         className="flex flex-col items-center gap-2 cursor-pointer"
                         onClick={() => scrollToSection(mlRef)}
                     >
-                        <p className="text-sm text-gray-400">Explore Categories</p>
-                        <ChevronDown className="w-6 h-6 text-cosmos-accent-cyan animate-bounce" />
+                        <p className="text-sm text-paper-text-muted font-serif italic">Explore Categories</p>
+                        <ChevronDown className="w-6 h-6 text-paper-accent animate-bounce" />
                     </motion.div>
                 </div>
             </section>
@@ -82,23 +82,23 @@ const LandingPage = () => {
                     <section
                         key={category.id}
                         ref={sectionRef}
-                        className="py-20 bg-cosmos-bg/50 border-t border-white/5"
+                        className="py-20 border-t border-paper-border"
                         id={category.id}
                     >
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="flex items-center justify-between mb-12">
                                 <div className="flex items-center gap-4">
-                                    <div className={`p-3 bg-white/5 rounded-xl border border-cosmos-accent-${category.color}/30`}>
-                                        <Icon className={`w-8 h-8 text-cosmos-accent-${category.color}`} />
+                                    <div className={`p-3 bg-white rounded-xl border border-paper-border shadow-sm`}>
+                                        <Icon className={`w-8 h-8 text-paper-accent`} />
                                     </div>
                                     <div>
-                                        <h2 className="text-3xl font-bold text-white">{category.name}</h2>
-                                        <p className="text-gray-400 mt-1">{category.description}</p>
+                                        <h2 className="text-3xl font-bold font-heading text-paper-text">{category.name}</h2>
+                                        <p className="text-paper-text-muted mt-1 font-serif italic">{category.description}</p>
                                     </div>
                                 </div>
                                 <button
                                     onClick={() => navigate(`/topics?category=${encodeURIComponent(category.name)}`)}
-                                    className="text-cosmos-accent-cyan hover:text-white transition-colors flex items-center gap-2"
+                                    className="text-paper-accent hover:text-paper-text transition-colors flex items-center gap-2 font-medium"
                                 >
                                     View All <ArrowRight className="w-4 h-4" />
                                 </button>
@@ -133,19 +133,19 @@ const VisualizationCard = ({ visualization }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className={`glass-panel p-6 rounded-xl h-48 flex flex-col justify-between hover:border-cosmos-accent-cyan/30 transition-colors group ${isComingSoon ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
+            className={`paper-card p-6 rounded-xl h-48 flex flex-col justify-between group ${isComingSoon ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
             onClick={handleClick}
         >
             <div>
-                <h3 className={`text-xl font-bold mb-2 ${isComingSoon ? 'text-gray-400' : 'text-white group-hover:text-cosmos-accent-cyan'} transition-colors`}>
+                <h3 className={`text-xl font-bold font-heading mb-2 ${isComingSoon ? 'text-paper-text-muted' : 'text-paper-text group-hover:text-paper-accent'} transition-colors`}>
                     {visualization.title}
                 </h3>
-                <p className="text-sm text-gray-400">{visualization.description}</p>
+                <p className="text-sm text-paper-text-muted font-serif">{visualization.description}</p>
             </div>
             <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-500 uppercase tracking-wider">{visualization.difficulty}</span>
+                <span className="text-xs text-paper-text-muted uppercase tracking-wider font-medium">{visualization.difficulty}</span>
                 {!isComingSoon && (
-                    <ArrowRight className="w-4 h-4 text-cosmos-accent-cyan opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-paper-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 )}
             </div>
         </motion.div>

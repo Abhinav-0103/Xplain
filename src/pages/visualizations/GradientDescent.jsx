@@ -99,14 +99,18 @@ const GradientDescent = () => {
                 </div>
             </ControlGroup>
 
-            <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-                <h3 className="text-sm font-medium text-gray-300 mb-2">Current State</h3>
-                <div className="space-y-1 text-xs font-mono text-cosmos-accent-cyan">
+            <div className="mt-6 p-4 bg-paper-bg rounded-lg border border-paper-border">
+                <h3 className="text-sm font-medium text-paper-text mb-2">Current State</h3>
+                <div className="space-y-1 text-xs font-mono text-paper-text-muted">
                     <p>Step: {currentStep}/{path.length - 1}</p>
-                    <p>X: {currentPoint.x.toFixed(3)}</p>
-                    <p>Y: {currentPoint.y.toFixed(3)}</p>
-                    <p>Loss: {currentPoint.loss.toFixed(3)}</p>
+                    <p>X: {currentPoint?.x.toFixed(3) || '0.000'}</p>
+                    <p>Y: {currentPoint?.y.toFixed(3) || '0.000'}</p>
+                    <p>Loss: {currentPoint?.loss.toFixed(3) || '0.000'}</p>
                 </div>
+            </div>
+
+            <div className="mt-4 p-3 bg-paper-bg rounded-lg border border-paper-border text-xs text-paper-text-muted">
+                <p>💡 Click 'Play' to start optimization.</p>
             </div>
         </>
     );
@@ -129,25 +133,23 @@ const GradientDescent = () => {
                 <circle
                     cx={xScale(2)}
                     cy={yScale(1)}
-                    r="8"
-                    fill="var(--color-cosmos-accent-cyan)"
-                    opacity="0.6"
-                    filter="drop-shadow(0 0 8px var(--color-cosmos-accent-cyan))"
+                    r={6}
+                    fill="#3D405B"
+                    opacity={0.5}
                 >
                     <title>Minimum at (2, 1)</title>
                 </circle>
 
                 {/* Optimization Path */}
                 {visiblePath.length > 1 && (
-                    <motion.polyline
-                        points={visiblePath.map(p => `${xScale(p.x)},${yScale(p.y)}`).join(' ')}
+                    <motion.path
+                        d={`M ${visiblePath.map(p => `${xScale(p.x)} ${yScale(p.y)}`).join(' L ')}`}
                         fill="none"
-                        stroke="var(--color-cosmos-accent-magenta)"
-                        strokeWidth="2"
-                        strokeDasharray="5 3"
+                        stroke="#E07A5F"
+                        strokeWidth="3"
                         initial={{ pathLength: 0 }}
                         animate={{ pathLength: 1 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.1 }}
                     />
                 )}
 
@@ -164,8 +166,8 @@ const GradientDescent = () => {
                             }}
                             exit={{ scale: 0 }}
                             r="4"
-                            fill={idx === currentStep ? "var(--color-cosmos-accent-magenta)" : "rgba(189, 0, 255, 0.5)"}
-                            filter={idx === currentStep ? "drop-shadow(0 0 6px var(--color-cosmos-accent-magenta))" : "none"}
+                            fill={idx === currentStep ? "#F2CC8F" : "#81B29A"}
+                            filter={idx === currentStep ? "drop-shadow(0 0 6px #F2CC8F)" : "none"}
                         />
                     ))}
                 </AnimatePresence>

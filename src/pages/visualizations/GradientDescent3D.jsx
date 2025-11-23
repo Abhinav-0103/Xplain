@@ -75,17 +75,17 @@ const GradientDescent3D = () => {
                 </div>
             </ControlGroup>
 
-            <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-                <h3 className="text-sm font-medium text-gray-300 mb-2">Current State</h3>
-                <div className="space-y-1 text-xs font-mono text-cosmos-accent-cyan">
+            <div className="mt-6 p-4 bg-paper-bg rounded-lg border border-paper-border">
+                <h3 className="text-sm font-medium text-paper-text mb-2">Current State</h3>
+                <div className="space-y-1 text-xs font-mono text-paper-text-muted">
                     <p>Step: {currentStep}/{path.length - 1}</p>
-                    <p>X: {currentPoint.x.toFixed(3)}</p>
-                    <p>Y: {currentPoint.y.toFixed(3)}</p>
-                    <p>Loss: {currentPoint.loss.toFixed(3)}</p>
+                    <p>X: {currentPoint?.x.toFixed(3) || '0.000'}</p>
+                    <p>Y: {currentPoint?.y.toFixed(3) || '0.000'}</p>
+                    <p>Loss: {currentPoint?.loss.toFixed(3) || '0.000'}</p>
                 </div>
             </div>
 
-            <div className="mt-4 p-3 bg-white/5 rounded-lg border border-white/10 text-xs text-gray-400">
+            <div className="mt-4 p-3 bg-paper-bg rounded-lg border border-paper-border text-xs text-paper-text-muted">
                 <p>💡 Use mouse to rotate, scroll to zoom</p>
             </div>
         </>
@@ -106,14 +106,14 @@ const GradientDescent3D = () => {
                 {/* Minimum point */}
                 <mesh position={[2, 1, 0]}>
                     <sphereGeometry args={[0.15, 16, 16]} />
-                    <meshStandardMaterial color="#00f3ff" emissive="#00f3ff" emissiveIntensity={0.5} />
+                    <meshStandardMaterial color="#3D405B" emissive="#3D405B" emissiveIntensity={0.2} />
                 </mesh>
 
                 {/* Path Line */}
                 {visiblePath.length > 1 && (
                     <Line
                         points={visiblePath.map(p => [p.x, p.y, p.z])}
-                        color="#ff00ff"
+                        color="#E07A5F"
                         lineWidth={3}
                         dashed
                         dashScale={10}
@@ -127,8 +127,8 @@ const GradientDescent3D = () => {
                     <mesh key={idx} position={[point.x, point.y, point.z]}>
                         <sphereGeometry args={[idx === currentStep ? 0.15 : 0.08, 16, 16]} />
                         <meshStandardMaterial
-                            color={idx === currentStep ? "#ff00ff" : "#bd00ff"}
-                            emissive={idx === currentStep ? "#ff00ff" : "#000000"}
+                            color={idx === currentStep ? "#E07A5F" : "#D4C5B0"}
+                            emissive={idx === currentStep ? "#E07A5F" : "#000000"}
                             emissiveIntensity={idx === currentStep ? 0.5 : 0}
                         />
                     </mesh>
@@ -184,11 +184,12 @@ const Surface = () => {
     return (
         <mesh ref={meshRef} geometry={geometry}>
             <meshStandardMaterial
-                color="#0f0f25"
+                color="#F9F7F1"
                 wireframe={false}
                 transparent
-                opacity={0.7}
+                opacity={0.8}
                 side={THREE.DoubleSide}
+                roughness={0.8}
             />
         </mesh>
     );

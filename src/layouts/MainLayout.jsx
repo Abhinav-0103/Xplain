@@ -8,8 +8,8 @@ const MainLayout = ({ children }) => {
             <main className="flex-grow pt-16">
                 {children}
             </main>
-            <footer className="border-t border-white/10 py-8 mt-auto glass-panel">
-                <div className="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm">
+            <footer className="border-t border-paper-border py-8 mt-auto bg-paper-card">
+                <div className="max-w-7xl mx-auto px-4 text-center text-paper-text-muted text-sm">
                     <p>&copy; {new Date().getFullYear()} Xplain. Interactive Learning Platform.</p>
                 </div>
             </footer>
