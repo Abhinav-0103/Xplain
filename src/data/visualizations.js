@@ -44,10 +44,18 @@ export const visualizations = [
     {
         id: 'sorting-algorithms',
         title: 'Sorting Algorithms',
-        description: 'Coming soon: Compare different sorting algorithms.',
-        category: 'Algorithms',
-        route: null,
+        description: 'Visualize Bubble, Selection, and Insertion Sort.',
+        category: 'Data Structures & Algorithms',
+        route: '/visualizations/sorting-algorithms',
         difficulty: 'Beginner',
+    },
+    {
+        id: 'dfs',
+        title: 'Depth First Search',
+        description: 'Visualize graph traversal using DFS algorithm.',
+        category: 'Data Structures & Algorithms',
+        route: '/visualizations/dfs',
+        difficulty: 'Intermediate',
     },
 ];
 

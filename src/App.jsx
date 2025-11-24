@@ -7,6 +7,8 @@ import LinearRegression from './pages/visualizations/LinearRegression';
 import GradientDescent from './pages/visualizations/GradientDescent';
 import GradientDescent3D from './pages/visualizations/GradientDescent3D';
 import BinarySearchTree from './pages/visualizations/BinarySearchTree';
+import SortingAlgorithms from './pages/visualizations/SortingAlgorithms';
+import DFS from './pages/visualizations/DFS';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/visualizations/gradient-descent" element={<GradientDescent />} />
           <Route path="/visualizations/gradient-descent-3d" element={<GradientDescent3D />} />
           <Route path="/visualizations/binary-search-tree" element={<BinarySearchTree />} />
+          <Route path="/visualizations/sorting-algorithms" element={<SortingAlgorithms />} />
+          <Route path="/visualizations/dfs" element={<DFS />} />
           <Route path="/about" element={<div className="p-20 text-center">About Page (Coming Soon)</div>} />
         </Routes>
       </MainLayout>

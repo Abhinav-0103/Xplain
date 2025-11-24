@@ -28,9 +28,9 @@ export const Slider = ({ label, value, min, max, step, onChange }) => (
 );
 
 export const Button = ({ children, onClick, variant = 'primary', className = '' }) => {
-    const baseStyles = "px-4 py-2 rounded-md font-medium text-sm transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5";
+    const baseStyles = "px-4 py-2 rounded-md font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-sm hover:shadow-md";
     const variants = {
-        primary: "bg-paper-accent text-white hover:bg-paper-accent/90",
+        primary: "bg-paper-accent text-white border border-transparent hover:bg-white hover:text-paper-accent hover:border-paper-accent",
         secondary: "bg-white border border-paper-border text-paper-text hover:bg-paper-bg hover:border-paper-accent",
         danger: "bg-red-500/10 text-red-500 border border-red-500/50 hover:bg-red-500/20"
     };

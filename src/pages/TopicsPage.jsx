@@ -68,9 +68,9 @@ const TopicsPage = () => {
 const CategoryButton = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`px-4 py-2 rounded-full font-medium transition-all ${isActive
-                ? 'bg-paper-accent text-white shadow-md'
-                : 'bg-white border border-paper-border text-paper-text-muted hover:bg-paper-bg hover:text-paper-text'
+        className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${isActive
+            ? 'bg-paper-accent text-white shadow-md border border-transparent hover:bg-white hover:text-paper-accent hover:border-paper-accent'
+            : 'bg-white border border-paper-border text-paper-text-muted hover:bg-paper-bg hover:text-paper-text'
             }`}
     >
         {label}

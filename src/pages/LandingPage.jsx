@@ -53,7 +53,7 @@ const LandingPage = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="flex justify-center gap-4 mb-16"
                     >
-                        <Link to="/topics" className="group relative px-8 py-3 bg-paper-accent text-white rounded-full font-semibold hover:bg-paper-accent/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center gap-2">
+                        <Link to="/topics" className="group relative px-8 py-3 bg-paper-accent text-white rounded-full font-semibold border border-transparent hover:bg-white hover:text-paper-accent hover:border-paper-accent transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2">
                             Explore All <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </motion.div>
