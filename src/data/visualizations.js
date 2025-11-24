@@ -65,6 +65,14 @@ export const visualizations = [
         route: '/visualizations/bfs',
         difficulty: 'Intermediate',
     },
+    {
+        id: 'convolution',
+        title: 'Convolution Operation',
+        description: 'Visualize 2D convolution with stride, padding, and dilation.',
+        category: 'Computer Vision',
+        route: '/visualizations/convolution',
+        difficulty: 'Intermediate',
+    },
 ];
 
 export const categories = [
@@ -88,6 +96,13 @@ export const categories = [
         icon: 'Database',
         description: 'Explore sorting, searching, trees, and graphs.',
         color: 'purple',
+    },
+    {
+        id: 'cv',
+        name: 'Computer Vision',
+        icon: 'Eye',
+        description: 'Understand image processing and convolution operations.',
+        color: 'blue',
     },
 ];
 
