@@ -73,6 +73,14 @@ export const visualizations = [
         route: '/visualizations/convolution',
         difficulty: 'Intermediate',
     },
+    {
+        id: 'cnn',
+        title: 'Convolutional Neural Network',
+        description: 'Interactive CNN with layer-by-layer forward pass visualization.',
+        category: 'Deep Learning',
+        route: '/visualizations/cnn',
+        difficulty: 'Advanced',
+    },
 ];
 
 export const categories = [

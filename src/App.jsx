@@ -12,6 +12,7 @@ import DFS from './pages/visualizations/DFS';
 import BFS from './pages/visualizations/BFS';
 import NeuralNetwork from './pages/visualizations/NeuralNetwork';
 import ConvolutionVisualization from './pages/visualizations/ConvolutionVisualization';
+import CNNVisualization from './pages/visualizations/CNNVisualization';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/visualizations/bfs" element={<BFS />} />
           <Route path="/visualizations/neural-network" element={<NeuralNetwork />} />
           <Route path="/visualizations/convolution" element={<ConvolutionVisualization />} />
+          <Route path="/visualizations/cnn" element={<CNNVisualization />} />
           <Route path="/about" element={<div className="p-20 text-center">About Page (Coming Soon)</div>} />
         </Routes>
       </MainLayout>

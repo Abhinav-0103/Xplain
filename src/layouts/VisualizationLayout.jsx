@@ -39,14 +39,6 @@ const VisualizationLayout = ({ title, controls, children }) => {
                         </button>
                         <h1 className="text-xl font-bold font-heading text-paper-text">{title}</h1>
                     </div>
-                    <div className="flex items-center space-x-4">
-                        <button className="p-2 rounded-md hover:bg-paper-bg text-paper-text-muted hover:text-paper-text transition-colors" title="Settings">
-                            <Settings className="w-5 h-5" />
-                        </button>
-                        <button className="p-2 rounded-md hover:bg-paper-bg text-paper-text-muted hover:text-paper-text transition-colors" title="Info">
-                            <Info className="w-5 h-5" />
-                        </button>
-                    </div>
                 </header>
 
                 {/* Visualization Canvas */}
