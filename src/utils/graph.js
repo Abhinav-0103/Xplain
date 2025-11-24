@@ -62,3 +62,31 @@ export function* dfs(adjacencyList, startNode) {
 
     yield { current: null, visited: new Set(visited), stack: [], path: [...path], finished: true };
 }
+
+export function* bfs(adjacencyList, startNode) {
+    const visited = new Set();
+    const queue = [startNode];
+    const path = [];
+
+    visited.add(startNode);
+    yield { current: startNode, visited: new Set(visited), queue: [...queue], path: [...path] };
+
+    while (queue.length > 0) {
+        const node = queue.shift();
+        path.push(node);
+
+        yield { current: node, visited: new Set(visited), queue: [...queue], path: [...path] };
+
+        const neighbors = adjacencyList[node] || [];
+        const sortedNeighbors = [...neighbors].sort((a, b) => a - b);
+
+        for (const neighbor of sortedNeighbors) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                queue.push(neighbor);
+                yield { current: null, visited: new Set(visited), queue: [...queue], path: [...path] };
+            }
+        }
+    }
+    yield { current: null, visited: new Set(visited), queue: [], path: [...path], finished: true };
+}

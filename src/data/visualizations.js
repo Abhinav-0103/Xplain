@@ -57,6 +57,14 @@ export const visualizations = [
         route: '/visualizations/dfs',
         difficulty: 'Intermediate',
     },
+    {
+        id: 'bfs',
+        title: 'Breadth First Search',
+        description: 'Visualize graph traversal using BFS algorithm.',
+        category: 'Data Structures & Algorithms',
+        route: '/visualizations/bfs',
+        difficulty: 'Intermediate',
+    },
 ];
 
 export const categories = [
