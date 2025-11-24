@@ -28,9 +28,9 @@ export const visualizations = [
     {
         id: 'neural-network',
         title: 'Neural Network',
-        description: 'Coming soon: Visualize forward and backpropagation.',
+        description: 'Visualize forward propagation in a Multi-Layer Perceptron.',
         category: 'Deep Learning',
-        route: null,
+        route: '/visualizations/neural-network',
         difficulty: 'Advanced',
     },
     {
