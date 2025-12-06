@@ -81,6 +81,14 @@ export const visualizations = [
         route: '/visualizations/cnn',
         difficulty: 'Advanced',
     },
+    {
+        id: 'attention',
+        title: 'Multi-Head Attention',
+        description: 'Visualize Self-Attention and Multi-Head Attention mechanisms.',
+        category: 'Deep Learning',
+        route: '/visualizations/attention',
+        difficulty: 'Advanced',
+    },
 ];
 
 export const categories = [
