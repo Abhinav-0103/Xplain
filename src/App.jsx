@@ -14,6 +14,7 @@ import NeuralNetwork from './pages/visualizations/NeuralNetwork';
 import ConvolutionVisualization from './pages/visualizations/ConvolutionVisualization';
 import CNNVisualization from './pages/visualizations/CNNVisualization';
 import AttentionVisualization from './pages/visualizations/AttentionVisualization';
+import TextVectorizationVisualization from './pages/visualizations/TextVectorizationVisualization';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/visualizations/convolution" element={<ConvolutionVisualization />} />
           <Route path="/visualizations/cnn" element={<CNNVisualization />} />
           <Route path="/visualizations/attention" element={<AttentionVisualization />} />
+          <Route path="/visualizations/text-vectorization" element={<TextVectorizationVisualization />} />
           <Route path="/about" element={<div className="p-20 text-center">About Page (Coming Soon)</div>} />
         </Routes>
       </MainLayout>

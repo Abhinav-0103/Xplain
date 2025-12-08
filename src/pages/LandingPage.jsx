@@ -1,8 +1,43 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Database, Network, ChevronDown, Eye } from 'lucide-react';
+import { ArrowRight, Brain, Database, Network, ChevronDown, Eye, MessageSquare } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { categories, getVisualizationsByCategory } from '../data/visualizations';
+
+const VisualizationCard = ({ visualization }) => {
+    const navigate = useNavigate();
+    const isComingSoon = !visualization.route;
+
+    const handleClick = () => {
+        if (!isComingSoon) {
+            navigate(visualization.route);
+        }
+    };
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className={`paper-card p-6 rounded-xl h-48 flex flex-col justify-between group ${isComingSoon ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
+            onClick={handleClick}
+        >
+            <div>
+                <h3 className={`text-xl font-bold font-heading mb-2 ${isComingSoon ? 'text-paper-text-muted' : 'text-paper-text group-hover:text-paper-accent'} transition-colors`}>
+                    {visualization.title}
+                </h3>
+                <p className="text-sm text-paper-text-muted font-serif">{visualization.description}</p>
+            </div>
+            <div className="flex items-center justify-between">
+                <span className="text-xs text-paper-text-muted uppercase tracking-wider font-medium">{visualization.difficulty}</span>
+                {!isComingSoon && (
+                    <ArrowRight className="w-4 h-4 text-paper-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                )}
+            </div>
+        </motion.div>
+    );
+};
 
 const LandingPage = () => {
     const mlRef = useRef(null);
@@ -19,6 +54,7 @@ const LandingPage = () => {
         Network: Network,
         Database: Database,
         Eye: Eye,
+        MessageSquare: MessageSquare,
     };
 
     return (
@@ -79,6 +115,11 @@ const LandingPage = () => {
                 const sectionRef = idx === 0 ? mlRef : idx === 1 ? dlRef : dsaRef;
                 const visualizations = getVisualizationsByCategory(category.name);
 
+                if (!Icon) {
+                    console.error(`Icon "${category.icon}" not found in iconMap.`);
+                    return null;
+                }
+
                 return (
                     <section
                         key={category.id}
@@ -115,41 +156,6 @@ const LandingPage = () => {
                 );
             })}
         </div>
-    );
-};
-
-const VisualizationCard = ({ visualization }) => {
-    const navigate = useNavigate();
-    const isComingSoon = !visualization.route;
-
-    const handleClick = () => {
-        if (!isComingSoon) {
-            navigate(visualization.route);
-        }
-    };
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className={`paper-card p-6 rounded-xl h-48 flex flex-col justify-between group ${isComingSoon ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
-            onClick={handleClick}
-        >
-            <div>
-                <h3 className={`text-xl font-bold font-heading mb-2 ${isComingSoon ? 'text-paper-text-muted' : 'text-paper-text group-hover:text-paper-accent'} transition-colors`}>
-                    {visualization.title}
-                </h3>
-                <p className="text-sm text-paper-text-muted font-serif">{visualization.description}</p>
-            </div>
-            <div className="flex items-center justify-between">
-                <span className="text-xs text-paper-text-muted uppercase tracking-wider font-medium">{visualization.difficulty}</span>
-                {!isComingSoon && (
-                    <ArrowRight className="w-4 h-4 text-paper-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                )}
-            </div>
-        </motion.div>
     );
 };
 

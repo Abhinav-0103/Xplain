@@ -84,10 +84,18 @@ export const visualizations = [
     {
         id: 'attention',
         title: 'Multi-Head Attention',
-        description: 'Visualize Self-Attention and Multi-Head Attention mechanisms.',
-        category: 'Deep Learning',
+        description: 'Interactive visualization of Self-Attention and Multi-Head Attention mechanisms.',
+        category: 'Natural Language Processing',
         route: '/visualizations/attention',
         difficulty: 'Advanced',
+    },
+    {
+        id: 'text-vectorization',
+        title: 'Bag of Words & TF-IDF',
+        description: 'Visualize how text is converted into numerical vectors using BoW and TF-IDF.',
+        category: 'Natural Language Processing',
+        route: '/visualizations/text-vectorization',
+        difficulty: 'Intermediate',
     },
 ];
 
@@ -119,6 +127,13 @@ export const categories = [
         icon: 'Eye',
         description: 'Understand image processing and convolution operations.',
         color: 'blue',
+    },
+    {
+        id: 'nlp',
+        name: 'Natural Language Processing',
+        icon: 'MessageSquare',
+        description: 'Explore text analysis, attention mechanisms, and language models.',
+        color: 'indigo',
     },
 ];
 
